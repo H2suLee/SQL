@@ -1,0 +1,32 @@
+select * from ( select rownum rn, a.* from ( 
+select e.* from employees e order by first_name ) a
+) where rn between (p-1)*s+1 and p*s;       
+
+
+-- page size : 1페이지에 5개
+-- 1 -> 1~5
+-- 2 -> 6~10
+-- startrow = (p-1)*s+1
+-- endrow = p*s
+
+select * from ( select rownum rn, a.* from ( 
+select e.* from employees e order by first_name ) a
+) where rn between 5 and 10;       
+
+select * 
+from ( select rownum rn, a.*
+       from ( select e.* from employees e order by first_name ) a
+       where rownum <= 15 )
+where rn > 10;       
+
+
+select rownum rn, a.*
+from ( select e.* from employees e order by first_name ) a
+where rownum <= 10;
+
+
+select rownum rn, a.*
+from ( select e.* from employees e order by first_name ) a
+where rownum <= 10;
+
+select rownum, e.* from employees e order by first_name;
